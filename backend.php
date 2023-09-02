@@ -8,7 +8,7 @@
 
 	<title>┌精品電子商務網站」</title>
 	<link href="./css/css.css" rel="stylesheet" type="text/css">
-	<script src="./js/jquery-1.9.1.min"></script>
+	<script src="./js/jquery-1.9.1.min.js"></script>
 	<script src="./js/js.js"></script>
 </head>
 
@@ -27,7 +27,7 @@
 				<a href="?do=th">商品分類與管理</a>
 				<a href="?do=order">訂單管理</a>
 				<a href="?do=user">會員管理</a>
-				<a href="?do=bot">頁尾版權管理</a>
+				<a href="?do=bottom">頁尾版權管理</a>
 				<a href="?do=news">最新消息管理</a>
 				<a href="./api/logout.php?logout=admin" style="color:#f00;">登出</a>
 			</div>
