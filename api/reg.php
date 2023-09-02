@@ -7,6 +7,7 @@ if($_POST['acc']=='admin'){
     if($User->count(['acc'=>$_POST['acc']])){
         to("../index.php?do=login&error=0");
     }else{
+        $_POST['regdate']=date("Y-m-d");
         $User->save($_POST);
         to("../index.php?do=login&error=1");
     }
