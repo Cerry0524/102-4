@@ -8,7 +8,7 @@
 
         <title>┌精品電子商務網站」</title>
         <link href="./css/css.css" rel="stylesheet" type="text/css">
-        <script src="./js/jquery-1.9.1.min"></script>
+        <script src="./js/jquery-1.9.1.min.js"></script>
         <script src="./js/js.js"></script>
 </head>
 
@@ -24,10 +24,20 @@
                                 <a href="?do=news">最新消息</a> |
                                 <a href="?do=look">購物流程</a> |
                                 <a href="?do=buycart">購物車</a> |
-                                <a href="?do=login">會員登入</a> |
-                                <a href="?do=admin">管理登入</a>
+                                <?php
+                                if (isset($_SESSION['user'])) {
+                                        echo "<a href='./api/logout.php?logout=user'>會員登出</a>|";
+                                } else {
+                                        echo "<a href='?do=login'>會員登入</a>|";
+                                }
+                                if (isset($_SESSION['admin'])) {
+                                        echo "<a href='./api/logout.php?logout=admin'>管理登出</a>";
+                                } else {
+                                        echo "<a href='?do=admin'>管理登入</a>";
+                                }
+                                ?>
                         </div>
-                        情人節特惠活動 &nbsp; 為了慶祝七夕情人節，將舉辦情人兩人到現場有七七折之特惠活動~
+                        <marquee behavior="" direction=""> 情人節特惠活動 &nbsp;&nbsp; 年終特賣會開跑了 </marquee>
                 </div>
                 <div id="left" class="ct">
                         <div style="min-height:400px;">
@@ -39,9 +49,21 @@
                         </span>
                 </div>
                 <div id="right">
+                        <?php
+                        $do = $_GET['do'] ?? 'main';
+                        $file = "./view/front/{$do}.php";
+                        $table = ucfirst($do);
+                        if (isset($$table)) {
+                                $$table->front();
+                        } else if (file_exists($file)) {
+                                include $file;
+                        } else {
+                                include "./view/front/main.php";
+                        }
+                        ?>
                 </div>
                 <div id="bottom" style="line-height:70px;background:url(icon/bot.png); color:#FFF;" class="ct">
-                        頁尾版權 : </div>
+                        頁尾版權 : <?= $Bottom->find(1)['bottom']; ?></div>
         </div>
 
 </body>

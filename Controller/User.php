@@ -12,4 +12,13 @@ class User extends DB
         ];
         return $this->view("./view/backend/user.php",$view);
     }
+    function login($user){
+        $chk=$this->count($user);
+        if($chk){
+            $_SESSION['user']=$user['acc'];
+            return 1;
+        }else{
+            return 0;
+        }
+    }
 }
