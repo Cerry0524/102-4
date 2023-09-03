@@ -15,6 +15,14 @@
 <div class="tt ct">
     購買數量
     <input type="number" name="qt" id="qt" value="1">
-    <a href="?" onclick="buy()">
+    <a href="?" onclick="buy(<?=$item['id']; ?>)">
         <img src="./icon/0402.jpg"></a>
 </div>
+<script>
+    function buy(id){
+        $.get("./api/buy.php",{id,qt:$("#qt").val()},(res)=>{
+            console.log(res);
+        })
+        
+    }
+</script>

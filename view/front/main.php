@@ -12,7 +12,7 @@ foreach ($items as $item) {
         <div class="pp" style="display: flex;width:70%;flex-direction:column;justify-content:space-between;">
             <div class="tt ct"> <?= $item['name']; ?></div>
             <div class="pp"> 價格：<?= $item['price']; ?>
-                <a href="?do=buycart&id=<?= $item['id']; ?>&qt=1">
+                <a href="./api/buy.php?id=<?= $item['id']; ?>&qt=1">
                     <img src="./icon/0402.jpg" style="width:60px;float:right;">
                 </a>
             </div>
