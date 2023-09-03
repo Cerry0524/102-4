@@ -1,4 +1,11 @@
 <?php
 include_once "../base.php";
 
-echo $Type->nav();
+switch ($_GET['type']) {
+    case 'big':
+        echo $Type->getBig();
+        break;
+    case 'mid':
+        echo $Type->getMid($_GET['id']);
+        break;
+}

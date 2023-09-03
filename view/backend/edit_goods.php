@@ -85,7 +85,7 @@
             id
         }, (mid) => {
             $("#mid").html(mid);
-            $(`#big option[value='<?= $row['mid']; ?>']`).prop("selected", true);
+            $(`#mid option[value='<?= $row['mid']; ?>']`).prop("selected", true);
         })
     }
 </script>
