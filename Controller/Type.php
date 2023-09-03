@@ -73,7 +73,7 @@ class Type extends DB
             if ($type['big'] == 0) {
                 return $type['name'];
             } else {
-                return $this->find(['big' => $type['big']])['name'] . ">" . $type['name'];
+                return $this->find($type['big'])['name'] . ">" . $type['name'];
             }
         }
     }
