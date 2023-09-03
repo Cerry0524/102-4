@@ -31,7 +31,7 @@
                                         echo "<a href='?do=login'>會員登入</a>|";
                                 }
                                 if (isset($_SESSION['admin'])) {
-                                        echo "<a href='./api/logout.php?logout=admin'>管理登出</a>";
+                                        echo "<a href='backend.php'>回後台</a>";
                                 } else {
                                         echo "<a href='?do=admin'>管理登入</a>";
                                 }

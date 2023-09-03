@@ -14,7 +14,7 @@ $row['pr']=unserialize($row['pr']);
         <tr>
             <td class="tt">密碼</td>
             <td class="pp">
-                <input type="password" name="pw" id="pw" value="<?= str_repeat("*", strlen($row['pw'])); ?>">
+                <input type="password" name="pw" id="pw" value="<?= $row['pw'] ?>">
             </td>
         </tr>
         <tr>
