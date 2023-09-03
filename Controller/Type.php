@@ -15,24 +15,49 @@ class Type extends DB
     }
     function getBig()
     {
-        $bigs=$this->all(['big'=>0]);
-        $html='';
+        $bigs = $this->all(['big' => 0]);
+        $html = '';
         foreach ($bigs as $big) {
-            $html.= "<option value='{$big['id']}'>";
-            $html.= $big['name'];
-            $html.= "</option>";
+            $html .= "<option value='{$big['id']}'>";
+            $html .= $big['name'];
+            $html .= "</option>";
         }
         return $html;
     }
     function getMid($id)
     {
-        $mids=$this->all(['big'=>$id]);
-        $html='';
+        $mids = $this->all(['big' => $id]);
+        $html = '';
         foreach ($mids as $mid) {
-            $html.= "<option value='{$mid['id']}'>";
-            $html.= $mid['name'];
-            $html.= "</option>";
+            $html .= "<option value='{$mid['id']}'>";
+            $html .= $mid['name'];
+            $html .= "</option>";
         }
         return $html;
+    }
+    function nav()
+    {
+        $Goods = new Goods;
+        $bigs = $this->all(['big' => 0]);
+        foreach ($bigs as $big) {
+            $mids = $this->all(['big' => $big['id']]);
+
+            echo  "<div class='ww'>";
+            echo  "<a href='?type={$big['id']}'>";
+            echo  $big['name'];
+            echo "(" . $Goods->count(['big' => $big['id']]) . ")";
+            echo  "</a>";
+            echo  "<div class='s'>";
+            foreach ($mids as $mid) {
+                if ($Goods->count(['mid' => $mid['id']]) != 0) {
+                    echo  "<a href='?type={$mid['id']}'>";
+                    echo  $mid['name'];
+                    echo "(" . $Goods->count(['mid' => $mid['id']]) . ")";
+                    echo  "</a>";
+                }
+            }
+            echo  "</div>";
+            echo  "</div>";
+        }
     }
 }

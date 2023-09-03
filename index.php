@@ -41,6 +41,7 @@
                 </div>
                 <div id="left" class="ct">
                         <div style="min-height:400px;">
+                                <?= $Type->nav(); ?>
                         </div>
                         <span>
                                 <div>進站總人數</div>
