@@ -98,3 +98,54 @@
         })
     }
 </script>
+<h2 class="ct">商品管理</h2>
+<div class="ct">
+    <button onclick="location.href='?do=add_goods'">新增商品</button>
+</div>
+<table class="all">
+    <tr>
+        <td class="tt">編號</td>
+        <td class="tt">商品名稱</td>
+        <td class="tt">庫存量</td>
+        <td class="tt">狀態</td>
+        <td class="tt">操作</td>
+    </tr>
+    <?php
+    $rows = $Goods->all();
+    foreach ($rows as $row) {
+    ?>
+        <tr>
+            <td class="pp"><?= $row['no']; ?></td>
+            <td class="pp"><?= $row['name']; ?></td>
+            <td class="pp"><?= $row['stock']; ?></td>
+            <td class="pp"><?= ($row['sh'] == 1) ? "販售中" : "已下架"; ?></td>
+            <td class="pp">
+                <button onclick="location.href='?do=edit_goods&id=<?= $row['id']; ?>'">修改</button>
+                <button onclick="del_goods(<?= $row['id']; ?>)">刪除</button>
+                <button onclick="sh(<?= $row['id']; ?>,1)">上架</button>
+                <button onclick="sh(<?= $row['id']; ?>,0)">下架</button>
+            </td>
+        </tr>
+    <?php
+    }
+    ?>
+</table>
+<script>
+    function del_goods(id) {
+        $.post("./api/del.php", {
+            id,
+            table: 'Goods'
+        }, (res) => {
+            location.reload();
+        })
+    }
+
+    function sh(id, sh) {
+        $.post("./api/sh.php", {
+            id,
+            sh
+        }, () => {
+            location.reload();
+        })
+    }
+</script>
