@@ -39,6 +39,10 @@ class Type extends DB
     {
         $Goods = new Goods;
         $bigs = $this->all(['big' => 0]);
+
+        echo  "<a href='?type=0'>全部商品";
+        echo "(" . $Goods->count() . ")";
+        echo  "</a>";
         foreach ($bigs as $big) {
             $mids = $this->all(['big' => $big['id']]);
 
@@ -60,4 +64,18 @@ class Type extends DB
             echo  "</div>";
         }
     }
+    function topNav($type)
+    {
+        if ($type == 0) {
+            return "全部商品";
+        } else {
+            $type = $this->find($type);
+            if ($type['big'] == 0) {
+                return $type['name'];
+            } else {
+                return $this->find(['big' => $type['big']])['name'] . ">" . $type['name'];
+            }
+        }
+    }
+
 }
